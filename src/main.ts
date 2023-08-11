@@ -1,3 +1,27 @@
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const port = process.env.PORT || 3000;
+const buildPath = path.normalize(path.join(__dirname, '../build'));
+const app = express();
+
+app.get('/api/v1/hello', (_req, res) => {
+  res.json({ message: 'Hello, world!' });
+});
+
+app.use(express.static(buildPath));
+
+app.get('/', (_req, res) => {
+  res.sendFile(path.join(buildPath, 'index.html'));
+});
+app.listen(port, () => {
+  console.log('Server listening on port', port);
+});
+
 /**
  * Some predefined delay values (in milliseconds).
  */
@@ -28,7 +52,8 @@ function delayedHello(
 // at https://eslint.org/docs/latest/user-guide/configuring/rules#disabling-rules
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export async function greeter(name: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
+export async function greeter(name: string) {
+  // eslint-disable-line @typescript-eslint/no-explicit-any
   // The name parameter should be of type string. Any is used only to trigger the rule.
   return await delayedHello(name, Delays.Long);
 }

@@ -1,12 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es2022",
-    "module": "node16",
-    "lib": ["ES2022"],
-    "moduleResolution": "node16",
+    "jsx": "react-jsx",
+    "target": "ES2020",
+    "module": "ESNext",
+    "esModuleInterop": true,
+    "lib": ["ES2020", "dom", "dom.iterable"],
+    "moduleResolution": "Bundler",
     "rootDir": ".",
     "outDir": "build",
     "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "noEmit": true,
     "importHelpers": true,
     "alwaysStrict": true,
     "sourceMap": true,
@@ -19,5 +24,5 @@
     "noImplicitThis": false,
     "strictNullChecks": false
   },
-  "include": ["src/**/*", "__tests__/**/*"]
+  "include": ["src/**/*", "__tests__/**/*", "globals.d.ts"]
 }
