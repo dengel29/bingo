@@ -1,5 +1,13 @@
+::view-transition-old(root) {
+  animation-duration: 0.5s;
+}
+
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+}
+
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-logo {
@@ -11,6 +19,18 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.cell__mine {
+  background-color: #61dafb;
+}
+
+.cell__theirs {
+  background-color: plum;
+}
+
+.cell__noOwner {
+  background-color: beige;
 }
 
 .App-header {
